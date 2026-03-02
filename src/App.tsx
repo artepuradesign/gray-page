@@ -169,6 +169,9 @@ import LoginRenner from '@/pages/dashboard/LoginRenner';
 import PdfRg from '@/pages/dashboard/PdfRg';
 import MeusPedidos from '@/pages/dashboard/MeusPedidos';
 import ConsultarCpfHistorico from '@/pages/dashboard/ConsultarCpfHistorico';
+import Preferencias from '@/pages/dashboard/Preferencias';
+import { SiteThemeProvider } from '@/contexts/SiteThemeContext';
+import MatrixRainBackground from '@/components/effects/MatrixRainBackground';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -179,6 +182,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
+        <SiteThemeProvider>
         <AuthProvider>
           <ModuleTemplateProvider>
             <TooltipProvider>
@@ -220,6 +224,7 @@ function App() {
                     <Route path="/dashboard/admin/indicacoes" element={<DashboardLayout><AdminIndicacoes /></DashboardLayout>} />
                     
                     <Route path="/dashboard/minha-conta" element={<DashboardLayout><MinhaConta /></DashboardLayout>} />
+                    <Route path="/dashboard/preferencias" element={<DashboardLayout><Preferencias /></DashboardLayout>} />
                     <Route path="/dashboard/dados-pessoais" element={<DashboardLayout><MinhaConta /></DashboardLayout>} />
                     <Route path="/dashboard/carteira" element={<DashboardLayout><Carteira /></DashboardLayout>} />
                     <Route path="/dashboard/consultar-cpf-puxa-tudo" element={<DashboardLayout><ConsultarCpfPuxaTudo /></DashboardLayout>} />
@@ -377,6 +382,7 @@ function App() {
             </TooltipProvider>
           </ModuleTemplateProvider>
         </AuthProvider>
+        </SiteThemeProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );

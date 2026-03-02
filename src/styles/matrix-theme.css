@@ -1,0 +1,77 @@
+/* Matrix Theme */
+.theme-matrix {
+  --background: 120 30% 3%;
+  --foreground: 120 100% 65%;
+  --card: 120 20% 6%;
+  --card-foreground: 120 100% 65%;
+  --popover: 120 20% 6%;
+  --popover-foreground: 120 100% 65%;
+  --primary: 120 100% 40%;
+  --primary-foreground: 120 30% 3%;
+  --secondary: 120 50% 15%;
+  --secondary-foreground: 120 100% 65%;
+  --muted: 120 20% 10%;
+  --muted-foreground: 120 40% 45%;
+  --accent: 120 50% 15%;
+  --accent-foreground: 120 100% 65%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 120 30% 15%;
+  --input: 120 30% 12%;
+  --ring: 120 100% 40%;
+  --brand-purple: 120 100% 35%;
+  --brand-darkPurple: 120 100% 25%;
+  --brand-lightPurple: 120 60% 10%;
+  --success: 120 100% 40%;
+  --success-foreground: 120 30% 3%;
+  --success-subtle: 120 30% 8%;
+  --success-subtle-foreground: 120 100% 65%;
+  --success-border: 120 40% 20%;
+}
+
+/* Matrix animated background */
+.matrix-bg-container {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: hsl(120 30% 3%);
+}
+
+.matrix-rain-canvas {
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+}
+
+/* Matrix glow effects */
+.theme-matrix .shadow-sm,
+.theme-matrix .shadow-md,
+.theme-matrix .shadow-lg {
+  --tw-shadow-color: hsla(120, 100%, 40%, 0.15);
+}
+
+.theme-matrix input:focus,
+.theme-matrix select:focus,
+.theme-matrix textarea:focus {
+  box-shadow: 0 0 0 2px hsla(120, 100%, 40%, 0.3);
+}
+
+/* Matrix scrollbar */
+.theme-matrix ::-webkit-scrollbar {
+  width: 6px;
+}
+
+.theme-matrix ::-webkit-scrollbar-track {
+  background: hsl(120 20% 5%);
+}
+
+.theme-matrix ::-webkit-scrollbar-thumb {
+  background: hsl(120 100% 25%);
+  border-radius: 3px;
+}
+
+.theme-matrix ::-webkit-scrollbar-thumb:hover {
+  background: hsl(120 100% 35%);
+}
