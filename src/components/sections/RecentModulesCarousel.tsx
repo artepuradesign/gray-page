@@ -3,13 +3,20 @@ import { motion } from 'framer-motion';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import { serviceModules } from '@/components/dashboard/modules/moduleData';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import ModuleCardTemplates from '@/components/configuracoes/personalization/ModuleCardTemplates';
 
 const recentModules = serviceModules.slice(-10).reverse();
 
-const RecentModulesCarousel: React.FC = () => {
-  const navigate = useNavigate();
+const getIconName = (IconComponent: React.ElementType): string => {
+  try {
+    return (IconComponent as any).displayName || (IconComponent as any).name || 'Package';
+  } catch {
+    return 'Package';
+  }
+};
 
+const RecentModulesCarousel: React.FC = () => {
   return (
     <section className="py-14 sm:py-20 bg-gradient-to-b from-background via-card/20 to-background">
       <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
@@ -40,20 +47,23 @@ const RecentModulesCarousel: React.FC = () => {
             {recentModules.map((mod) => (
               <CarouselItem
                 key={mod.title}
-                className="pl-4 basis-[70%] sm:basis-1/2 md:basis-1/3 lg:basis-1/5"
+                className="pl-4 basis-[45%] sm:basis-1/3 md:basis-1/4 lg:basis-1/5"
               >
-                <motion.div
-                  whileHover={{ y: -6, scale: 1.03 }}
-                  className="group relative bg-card/80 backdrop-blur-sm rounded-2xl p-5 cursor-pointer border border-border/50 hover:border-primary/40 shadow-sm hover:shadow-lg transition-all duration-300 h-full"
-                  onClick={() => navigate(mod.path)}
-                >
-                  <div className="h-12 w-12 rounded-xl bg-primary/10 ring-1 ring-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <mod.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="font-bold text-foreground text-base mb-1">{mod.title}</h3>
-                  <p className="text-xs text-muted-foreground mb-3">{mod.description}</p>
-                  <span className="text-sm font-semibold text-primary">R$ {mod.price}</span>
-                </motion.div>
+                <Link to={mod.path} className="block homepage-module-card">
+                  <ModuleCardTemplates
+                    module={{
+                      title: mod.title,
+                      description: mod.description,
+                      price: '',
+                      status: 'ativo',
+                      operationalStatus: 'on',
+                      iconSize: 'medium',
+                      showDescription: true,
+                      icon: getIconName(mod.icon),
+                    }}
+                    template="modern"
+                  />
+                </Link>
               </CarouselItem>
             ))}
           </CarouselContent>
