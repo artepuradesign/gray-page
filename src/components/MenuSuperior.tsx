@@ -152,16 +152,6 @@ const MenuSuperior = () => {
 
             {user ? (
               <>
-                {!isDashboardPage && (
-                  <Button 
-                    onClick={handleDashboardNavigation}
-                    size="sm"
-                    variant="outline"
-                  >
-                    <House className="mr-2" size={16} />
-                    Painel
-                  </Button>
-                )}
                 <UserWalletDropdown onLogout={handleLogout} />
                 <UserProfileDropdown onLogout={handleLogout} />
               </>
