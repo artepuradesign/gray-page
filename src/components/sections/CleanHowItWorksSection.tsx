@@ -35,8 +35,8 @@ const CleanHowItWorksSection: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="py-16 sm:py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
+    <section className="py-16 sm:py-24 relative overflow-hidden bg-card border-y border-border/40">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 max-w-6xl relative z-10">
         <motion.div
