@@ -2,21 +2,21 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
-import { serviceModules } from '@/components/dashboard/modules/moduleData';
 import { Link } from 'react-router-dom';
 import ModuleCardTemplates from '@/components/configuracoes/personalization/ModuleCardTemplates';
-
-const recentModules = serviceModules.slice(-10).reverse();
-
-const getIconName = (IconComponent: React.ElementType): string => {
-  try {
-    return (IconComponent as any).displayName || (IconComponent as any).name || 'Package';
-  } catch {
-    return 'Package';
-  }
-};
+import { useApiModules } from '@/hooks/useApiModules';
 
 const RecentModulesCarousel: React.FC = () => {
+  const { modules, isLoading } = useApiModules();
+
+  // Only active modules with operational_status 'on', last 10
+  const activeModules = modules
+    .filter(m => m.is_active && m.operational_status === 'on')
+    .slice(-10)
+    .reverse();
+
+  if (isLoading || activeModules.length === 0) return null;
+
   return (
     <section className="py-14 sm:py-20 bg-gradient-to-b from-background via-card/20 to-background">
       <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
@@ -44,12 +44,12 @@ const RecentModulesCarousel: React.FC = () => {
           className="w-full"
         >
           <CarouselContent className="-ml-4">
-            {recentModules.map((mod) => (
+            {activeModules.map((mod) => (
               <CarouselItem
-                key={mod.title}
+                key={mod.id}
                 className="pl-4 basis-[45%] sm:basis-1/3 md:basis-1/4 lg:basis-1/5"
               >
-                <Link to={mod.path} className="block homepage-module-card">
+                <Link to={mod.path || `/module/${mod.slug}`} className="block homepage-module-card">
                   <ModuleCardTemplates
                     module={{
                       title: mod.title,
@@ -59,7 +59,8 @@ const RecentModulesCarousel: React.FC = () => {
                       operationalStatus: 'on',
                       iconSize: 'medium',
                       showDescription: true,
-                      icon: getIconName(mod.icon),
+                      icon: mod.icon || 'Package',
+                      color: mod.color,
                     }}
                     template="modern"
                   />
