@@ -44,7 +44,7 @@ const HomeCarouselSection: React.FC = () => {
         image: slide02,
       },
       {
-        title: "Ferramentas para Seu Negócio",
+        title: "Ferramentas para Empresas",
         subtitle: "Plataforma completa com módulos de consulta e gestão empresarial.",
         image: slide01,
       },
