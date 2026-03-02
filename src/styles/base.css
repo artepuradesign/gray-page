@@ -142,3 +142,11 @@
     @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
   }
 }
+
+/* Hide price and button on homepage module cards */
+.homepage-module-card button {
+  display: none !important;
+}
+.homepage-module-card .absolute.top-2.right-2 {
+  display: none !important;
+}
