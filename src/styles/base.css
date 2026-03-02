@@ -146,10 +146,6 @@
 /* Hide button on homepage module cards, allow 3 lines of description */
 .homepage-module-card button {
   display: none !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
 }
 .homepage-module-card .line-clamp-2 {
   -webkit-line-clamp: 3 !important;
@@ -157,6 +153,6 @@
 .homepage-module-card .min-h-\[2rem\] {
   min-height: 0 !important;
 }
-.homepage-module-card .mt-auto {
-  margin-top: 0 !important;
+.homepage-module-card .h-\[190px\] {
+  height: 155px !important;
 }
