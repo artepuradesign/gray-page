@@ -151,7 +151,7 @@ const HomeCarouselSection: React.FC = () => {
                   {/* Conteúdo de texto (ficará por cima, sem ser afetado pelo gradiente) */}
                   <div className="absolute inset-0 z-[2] pointer-events-none">
                     <div className="container mx-auto px-4 sm:px-6 max-w-6xl h-full pointer-events-auto">
-                      <div className="h-full flex items-center py-10 sm:py-12">
+                      <div className="h-full flex items-end sm:items-center pb-16 sm:pb-0 py-10 sm:py-12">
                         <div className="w-full sm:max-w-xl text-center sm:text-left">
                           {/* Card mobile com fundo */}
                           <div className="mx-auto sm:mx-0 max-w-[520px] rounded-xl bg-background/55 backdrop-blur-md ring-1 ring-border/60 p-4 sm:p-0 sm:rounded-none sm:bg-transparent sm:backdrop-blur-0 sm:ring-0">
@@ -184,7 +184,7 @@ const HomeCarouselSection: React.FC = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -8 }}
                                 transition={{ duration: 0.35, delay: 0.05 }}
-                                className="mt-2 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-[42ch] mx-auto sm:mx-0"
+                                className="mt-2 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-[42ch] mx-auto sm:mx-0 hidden sm:block"
                               >
                                 {slide.subtitle}
                               </motion.p>
@@ -193,7 +193,7 @@ const HomeCarouselSection: React.FC = () => {
                             <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row flex-wrap gap-2">
                               <Button
                                 size="sm"
-                                className="w-full sm:w-auto"
+                                className="w-full sm:w-auto hidden sm:inline-flex"
                                 onClick={() => navigate("/registration")}
                               >
                                 Testar grátis (10 consultas)
